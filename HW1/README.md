@@ -39,3 +39,5 @@ C++-style is text following a “//” delimiter running up to the end of the li
 % make
 
 % ./scanner [input file]
+
+# Platform : ubuntu 16.04
