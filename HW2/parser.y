@@ -204,3 +204,27 @@ int yyerror( char *msg )
         fprintf( stderr, "|--------------------------------------------------------------------------\n" );
         exit(-1);
 }
+
+int  main( int argc, char **argv )
+{
+	if( argc != 2 ) {
+		fprintf(  stdout,  "Usage:  ./parser  [filename]\n"  );
+		exit(0);
+	}
+
+	FILE *fp = fopen( argv[1], "r" );
+	
+	if( fp == NULL )  {
+		fprintf( stdout, "Open  file  error\n" );
+		exit(-1);
+	}
+	
+	yyin = fp;
+	yyparse();
+
+	fprintf( stdout, "\n" );
+	fprintf( stdout, "|--------------------------------|\n" );
+	fprintf( stdout, "|  There is no syntactic error!  |\n" );
+	fprintf( stdout, "|--------------------------------|\n" );
+	exit(0);
+}
