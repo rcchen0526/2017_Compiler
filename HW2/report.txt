@@ -1,0 +1,7 @@
+這份作業中的lex.l改自老師給的第一份作業解答，將裡面抓出來的token丟給parser作處理，由於裡頭的main function不會用到，因此將main function刪掉，在parser裡面描述garmmar以用來完成分析文法．
+
+在parser.y裡面先將lex出來的結果宣告使之成為terminal，並用％left的特性使得運算子可以有結合性也利用越早宣告的優先段越低的特性解決shift/reduce的問題，在寫的過程中是從第一行的program作為start symbol，後面加入spec的non terminal，慢慢往下延伸直到lex.l可以判斷的terminal．
+
+之後的grammar按照spec操作，其中困擾比較久的是關於expression的部分，一開始認為可以用expression->bool_expression | int_experssion，但是這樣會有太多conflict的問題，於是後來改成bool_expression做一些操作後會得到int_experssion，其他像是id_list可以有零個或一個 ＩＤＥＮＴ 並用','的grammar，在老師上課中都有教如何操作，並不是太大的困擾．
+
+這份作業使我更了解上課老師教的grammar如何使用，遇到conflict後開始尋找後修改code，也明白如何解決conflict的問題．
