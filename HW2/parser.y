@@ -194,3 +194,13 @@ return 		: RETURN bool_expre SEMICOLON
 			;
 
 %%
+
+int yyerror( char *msg )
+{
+        fprintf( stderr, "\n|--------------------------------------------------------------------------\n" );
+	fprintf( stderr, "| Error found in Line #%d: %s\n", linenum, buf );
+	fprintf( stderr, "|\n" );
+	fprintf( stderr, "| Unmatched token: %s\n", yytext );
+        fprintf( stderr, "|--------------------------------------------------------------------------\n" );
+        exit(-1);
+}
