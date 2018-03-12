@@ -28,3 +28,17 @@ char strContent[MAX_LINE_LENG];		/* string buffer */
 
 void setPseudoComment( const char * );	/* pseudo comment option switch */
 %}
+
+whitespace [ \t]+
+letter [A-Za-z]
+digit [0-9]
+integer 0|[1-9][0-9]*
+octal 0[0-7]+
+fraction 0|[0-9]*[1-9]
+float {integer}"."{fraction}
+scientific ({integer}|{float}|{octal})[Ee][+-]?({integer}|{octal})
+identifier ({letter})({letter}|{digit})*
+
+ /* exclusive start conditions */
+%x COMMENT
+%x COMMENT_CPP
