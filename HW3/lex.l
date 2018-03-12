@@ -180,3 +180,33 @@ identifier ({letter})({letter}|{digit})*
 				}
 
 %%
+
+
+void setPseudoComment( const char *text )
+{
+	/* format : //&[A-Z][+-] */
+	switch( text[3] ) {
+	 case 'S':			/* Source code */
+		if( text[4] == '+' )
+			Opt_S = 1;
+		else if( text[4] == '-' )
+			Opt_S = 0;
+		break;
+	 case 'T':			/* Tokens */
+		if( text[4] == '+' )
+			Opt_T = 1;
+		else if( text[4] == '-' )
+			Opt_T = 0;
+	 	break;
+	 case 'D':			/* Tokens */
+		if( text[4] == '+' )
+			Opt_D = 1;
+		else if( text[4] == '-' )
+			Opt_D = 0;
+	 	break;
+	 default:
+	 	break;
+	}
+
+}
+
